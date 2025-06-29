@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redmi 13 4G - World Tech Reviews</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Redmi 13 4G Review</h1>
+    <label for="themeSelect">Theme:</label>
+<select id="themeSelect">
+  <option value="system">🌓 System</option>
+  <option value="light">🌞 Light</option>
+  <option value="dark">🌙 Dark</option>
+</select>
+  </header>
+
+  <main>
+    <img src="images/redmi13.jpg" alt="Redmi 13 4G">
+    <p><strong>Camera:</strong> 108MP AI triple camera</p>
+    <p><strong>Processor:</strong> MediaTek Helio G88</p>
+    <p><strong>Battery:</strong> 5000mAh with 33W fast charging</p>
+    <p><strong>Price:</strong> Under ₦150k</p>
+    <p>The Redmi 13 4G is an affordable daily driver with standout battery life and surprisingly strong cameras at this price.</p>
+    <a href="index.html" class="back-button">← Back to Home</a>
+  </main>
+  <script>
+  const themeSelect = document.getElementById("themeSelect");
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+    } else if (theme === "light") {
+      document.body.classList.remove("dark-mode");
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (prefersDark) {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    }
+  }
+
+  themeSelect.addEventListener("change", () => {
+    const selectedTheme = themeSelect.value;
+    localStorage.setItem("theme", selectedTheme);
+    applyTheme(selectedTheme);
+  });
+
+  window.onload = () => {
+    const savedTheme = localStorage.getItem("theme") || "system";
+    themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
+  };
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+    if (themeSelect.value === "system") {
+      applyTheme("system");
+    }
+  });
+</script>
+
+<script src="theme.js"></script>
+
+</body>
+</html>

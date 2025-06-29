@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Tech Reviews</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-title">
+      <img src="images/logo.jpg" alt="World Tech Logo" class="site-logo">
+      <h1>World Tech Reviews</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="phones.html">Phones</a>
+      <a href="laptops.html">Laptops</a>
+      <a href="#">Deals</a>
+    </nav>
+
+    <label for="themeSelect">Theme:</label>
+    <select id="themeSelect">
+      <option value="system">🌓 System</option>
+      <option value="light">🌞 Light</option>
+      <option value="dark">🌙 Dark</option>
+    </select>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Find the Best Tech for You</h2>
+      <p>In-depth, unbiased reviews on phones, laptops, and more — updated weekly!</p>
+      <a href="#reviews" class="cta-button">Explore Reviews</a>
+    </div>
+  </section>
+
+  <main>
+    <!-- 🔍 Search + Category Filter -->
+    <section class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search reviews..." />
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="phones">Phones</option>
+        <option value="laptops">Laptops</option>
+      </select>
+    </section>
+
+    <div class="review-grid" id="reviews">
+      <section class="review phones">
+        <h2>TECNO Camon 30 Premier Review</h2>
+        <img src="images/camon30.jpg" alt="Camon 30 Premier">
+        <p>The Camon 30 Premier offers flagship camera features under ₦400k.</p>
+        <a href="camon30.html">Read More</a>
+      </section>
+
+      <section class="review phones">
+        <h2>Redmi 13 4G Review</h2>
+        <img src="images/redmi13.jpg" alt="Redmi 13">
+        <p>Budget phone with big battery and 108MP camera under ₦150k.</p>
+        <a href="redmi13.html">Read More</a>
+      </section>
+
+      <section class="review laptops">
+        <h2>MacBook Air M2 Review</h2>
+        <img src="images/macbookair.jpg" alt="MacBook Air">
+        <p>Perfect for students and remote workers. Slim, silent, powerful.</p>
+        <a href="macbookair.html">Read More</a>
+      </section>
+
+      <section class="review laptops">
+        <h2>Dell XPS 13 (2024) Review</h2>
+        <img src="images/dellxps.jpg" alt="Dell XPS 13">
+        <p>Premium Windows laptop with sleek design and sharp display.</p>
+        <a href="dellxps.html">Read More</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 World Tech Reviews. Built by CHRISTIAN E. ERUOPHE 💻</p>
+  </footer>
+
+  <!-- ✅ Scripts -->
+  <script src="js/theme.js"></script>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const reviews = document.querySelectorAll(".review");
+
+    searchInput.addEventListener("input", function () {
+      const keyword = this.value.toLowerCase();
+      reviews.forEach(review => {
+        const text = review.innerText.toLowerCase();
+        review.style.display = text.includes(keyword) ? "block" : "none";
+      });
+    });
+
+    categoryFilter.addEventListener("change", function () {
+      const category = this.value;
+      reviews.forEach(review => {
+        const hasCategory = review.classList.contains(category);
+        review.style.display =
+          category === "all" || hasCategory ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
